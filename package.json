@@ -1,8 +1,8 @@
 {
-  "name": "mybot",
+  "name": "qq-bot",
   "version": "1.0.0",
   "main": "src/app.ts",
-  "author": "Litfa <admin@litf.com.cn>",
+  "author": "Litfa <admin@ltfei.cn>",
   "license": "MIT",
   "scripts": {
     "start": "ts-node ./src/app.ts",
