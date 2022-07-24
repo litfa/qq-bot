@@ -5,3 +5,4 @@ dist
 config.json
 config.yml
 logs
+template
