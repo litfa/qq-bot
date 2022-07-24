@@ -1,5 +1,6 @@
 import WebSocket from 'ws'
 import config from './config'
+import type data from '../types/data'
 
 const ws = new WebSocket(
   `ws://${config.bot.host}:${config.bot.port}/all?verifyKey=${config.bot.verifyKey}&qq=${config.bot.qq}`
@@ -13,7 +14,7 @@ const send = (json: any) => {
   }
 }
 
-const message = (data: (data: JSON) => void) => {
+const message = (data: (data: data) => void) => {
   ws.on('message', (e) => {
     // @ts-ignore
     data(JSON.parse(e))
