@@ -1,5 +1,6 @@
 import { ws, message } from './utils/ws'
 import { readdirSync } from 'fs'
+import { logger } from './utils/log'
 
 ws.on('open', () => {
   message((data) => {
@@ -10,7 +11,9 @@ ws.on('open', () => {
     //     data.data.sender?.group?.id
     //   }-${data.data.sender?.group?.name}`
     // )
-    console.log(JSON.stringify(data))
+    logger.info(JSON.stringify(data))
+
+    // console.log(JSON.stringify(data))
   })
   const plugins = readdirSync('./plugins')
 
