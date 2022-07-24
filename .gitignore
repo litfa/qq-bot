@@ -4,3 +4,4 @@ dist
 *config*
 config.json
 config.yml
+logs
