@@ -1,0 +1,23 @@
+# 配置文件模板 请手动创建config.yml
+# 改完请重启
+port: 3000
+bot:
+  host: 'localhost'
+  port: 8080
+  verifyKey: abcdef
+  qq: 123456
+mysql:
+  host: localhost
+  port: 3306
+  user: root
+  password: admin123
+  database: qq_bot
+cron:
+  - time: '20 22 * * *'
+    groups: [123456, 7890]
+    friends: [12345]
+    template: 猫猫祟祟.json
+sendNudge:
+  command: '戳'
+  # 谁发送命令
+  command_sender: 123456

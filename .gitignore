@@ -1,7 +1,7 @@
 node_modules
-data
 dist
-config.json
 config.yml
 logs
-template
+# template
+*.bak/*
+*.ignore.*
