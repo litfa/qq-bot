@@ -1,7 +1,6 @@
 node_modules
 data
 dist
-*config*
 config.json
 config.yml
 logs
