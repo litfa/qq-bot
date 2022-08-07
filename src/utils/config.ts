@@ -27,5 +27,10 @@ export default <
       command: string
       command_sender: number
     }
+    MemberJoinRequest: {
+      group: number
+      regex: string
+      minLevel: number
+    }[]
   }
->parse(readFileSync('config.yml', 'utf8'))
+  >parse(readFileSync('config.yml', 'utf8'))

@@ -7,6 +7,10 @@ interface Data {
   type: string
   messageChain: MessageChain[]
   sender: Sender
+  fromId?: number
+  groupId?: number
+  message?: string
+  eventId?: number
 }
 
 interface Sender {
