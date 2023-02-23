@@ -12,6 +12,15 @@ mysql:
   user: root
   password: admin123
   database: qq_bot
+smtp:
+  enable: true
+  host: smtp.ym.163.com 
+  port: 25
+  secure: false 
+  from: ltfei <ltfei@ltfei.cn>
+  auth:
+    user: email@email.email
+    pass: admin123
 cron:
   - time: '20 22 * * *'
     groups: [123456, 7890]
@@ -21,3 +30,8 @@ sendNudge:
   command: '戳'
   # 谁发送命令
   command_sender: 123456
+checkFriend:
+  # 发送到邮箱(需要配置smtp)
+  emailTo: ltfei@ltfei.cn
+  # 默认1小时一次
+  time: '00 * * * *'
