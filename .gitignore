@@ -5,3 +5,5 @@ logs
 # template
 *.bak/*
 *.ignore.*
+data
+.vscode

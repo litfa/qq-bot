@@ -43,5 +43,9 @@ export default <
       regex: string
       minLevel: number
     }[]
+    checkFriend: {
+      time: string,
+      emailTo: string
+    }
   }
   >parse(readFileSync('config.yml', 'utf8'))

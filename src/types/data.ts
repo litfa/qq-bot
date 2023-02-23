@@ -11,7 +11,14 @@ interface Data {
   groupId?: number
   message?: string
   eventId?: number
+  data?: Friends
 }
+
+export type Friends = {
+  id: number
+  nickname: string
+  remark: string
+}[]
 
 interface Sender {
   id: number
