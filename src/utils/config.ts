@@ -17,6 +17,17 @@ export default <
       'password': string
       'database': string
     }
+    smtp: {
+      enable: boolean
+      host: string,
+      port: number,
+      secure: boolean,
+      from: string,
+      auth: {
+        user: string
+        pass: string
+      }
+    }
     cron: {
       time: string
       groups: number[]

@@ -14,12 +14,14 @@
     "cron": "^2.0.0",
     "log4js": "^6.6.0",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.9.1",
     "ws": "^8.7.0",
     "yaml": "^2.1.1"
   },
   "devDependencies": {
     "@types/cron": "^2.0.0",
     "@types/mysql": "^2.15.21",
+    "@types/nodemailer": "^6.4.7",
     "@types/ws": "^8.5.3",
     "ts-node": "^10.8.0",
     "typescript": "^4.7.2"
