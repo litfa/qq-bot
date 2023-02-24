@@ -1,11 +1,13 @@
-import { message } from '../../src/utils/ws'
+import { onMessage } from '../../src/utils/ws'
+import type Data from '../../src/types/data'
 import { query } from '../../src/utils/db'
 
 export const main = () => {
-  message(async (data) => {
+  // @ts-ignore
+  onMessage(async (data: Data) => {
     const date = new Date()
     // 数据库
-    if (data.data.type)
+    if (data.data?.type)
       await query('insert into messages set ?', {
         'type': data.data.type,
         'message_chain': JSON.stringify(data.data.messageChain),

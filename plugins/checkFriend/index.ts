@@ -1,6 +1,7 @@
-import { send, message } from '../../src/utils/ws'
+import { send, onMessage } from '../../src/utils/ws'
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
 import type { Friends } from '../../src/types/data'
+import { MessageType } from 'typescript-mirai-api-http'
 import { sendCheckFriendsMail } from '../../src/utils/mail'
 import config from '../../src/utils/config'
 import dayjs from 'dayjs'
@@ -8,11 +9,24 @@ import { CronJob } from 'cron'
 
 const path = './data/friends.json'
 
+interface Data {
+  syncId: number
+  data: {
+    code: number
+    msg: string
+    data: {
+      id: number
+      nickname: string
+      remark: string
+    }[]
+  }
+}
+
 const getFriendList = (): Promise<Friends> => {
   return new Promise((resolve, reject) => {
-    const syncId = Math.floor(Math.random() * 10000).toString()
+    const syncId = Math.floor(Math.random() * 10000)
     // @ts-ignore
-    message((data) => {
+    onMessage((data: Data) => {
       data.syncId == syncId && resolve(data?.data?.data!)
     })
     send({

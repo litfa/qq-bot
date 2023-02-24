@@ -1,8 +1,10 @@
-import { message, send } from '../../src/utils/ws'
+import { onMessage, send } from '../../src/utils/ws'
 import config from '../../src/utils/config'
+import type Data from '../../src/types/data'
 
 export const main = () => {
-  message((data) => {
+  // @ts-ignore
+  onMessage((data: Data) => {
     if (
       (data.data?.sender?.id == config.sendNudge?.command_sender ||
         data.data?.sender == undefined) &&
@@ -16,12 +18,15 @@ export const main = () => {
 
       const group = command[1]
       const target = command[2]
-      let count = command[3] || 1
+      let count: any = command[3] || 1
+      console.log(count)
+      
       if (count <= 0) {
         count = 1
       }
+      console.log(count)
       for (let i = 1; i <= count; i++) {
-        console.log({
+        console.log(i, count, {
           'syncId': 123, // 消息同步的字段
           'command': 'sendNudge', // 命令字
           'content': {
