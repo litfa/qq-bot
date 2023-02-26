@@ -1,0 +1,19 @@
+{
+  "name": "qq-bot",
+  "version": "2.0.0",
+  "main": "src/app.ts",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node ./src/app.ts",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "log4js": "^6.8.0",
+    "typescript-mirai-api-http": "^1.1.2",
+    "yaml": "^2.2.1"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}

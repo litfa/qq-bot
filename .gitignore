@@ -1,0 +1,8 @@
+node_modules
+dist
+config.yml
+logs
+# template
+*.bak/*
+data
+.vscode
