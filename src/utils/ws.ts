@@ -1,4 +1,5 @@
 import config from './config'
+import { logger } from './log'
 import { CreateMiraiApi } from 'typescript-mirai-api-http'
 
 const { host, port, qq, verifyKey } = config.bot
@@ -18,13 +19,13 @@ const {
 } = CreateMiraiApi(host, port, verifyKey, qq)
 
 open(() => {
-  console.log('ws 连接成功')
+  logger.info('ws 连接成功')
 })
 close(() => {
-  console.log('ws 连接断开')
+  logger.warn('ws 连接断开')
 })
 error(() => {
-  console.log('ws 连接失败')
+  logger.warn('ws 连接失败')
 })
 onMessage((data) => {
   JSON.stringify(data)
