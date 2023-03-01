@@ -28,7 +28,7 @@ error(() => {
   logger.warn('ws 连接失败')
 })
 onMessage((data) => {
-  JSON.stringify(data)
+  console.log(JSON.stringify(data))
 })
 
 export {

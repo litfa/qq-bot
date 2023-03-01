@@ -16,6 +16,10 @@ interface Config {
     password: string
     database: string
   }
+  send_nudge?: {
+    command_sender: number
+    command: string
+  }
 }
 
 const defaultConfig = `
@@ -30,7 +34,14 @@ mysql:
   user: root
   password: admin123
   database: qq_bot
-plugins: ['hello-world', 'sql']
+# 开启的插件
+plugins: ['hello_world', 'sql']
+# 发送戳一戳消息
+send_nudge:
+  # 允许谁发送指令
+  command_sender: 123456
+  # 指令内容
+  command: '戳'
 `
 
 if (!existsSync('config.yml')) {
