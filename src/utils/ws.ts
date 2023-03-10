@@ -15,7 +15,15 @@ const {
   open,
   onMessage,
   onGroupMessage,
-  onFriendMessage
+  onFriendMessage,
+  getFriendList,
+  getGroupList,
+  getMemberList,
+  getLatestMemberList,
+  getBotProfile,
+  getFriendProfile,
+  getMemberProfile,
+  getUserProfile
 } = CreateMiraiApi(host, port, verifyKey, qq)
 
 open(() => {
@@ -42,5 +50,13 @@ export {
   open,
   onMessage,
   onGroupMessage,
-  onFriendMessage
+  onFriendMessage,
+  getFriendList,
+  getGroupList,
+  getMemberList,
+  getLatestMemberList,
+  getBotProfile,
+  getFriendProfile,
+  getMemberProfile,
+  getUserProfile
 }

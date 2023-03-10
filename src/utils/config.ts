@@ -16,9 +16,26 @@ interface Config {
     password: string
     database: string
   }
+  smtp: {
+    enable: boolean
+    host: string,
+    port: number,
+    secure: boolean,
+    from: string,
+    auth: {
+      user: string
+      pass: string
+    }
+  }
   send_nudge?: {
     command_sender: number
     command: string
+  }
+  friend_check: {
+    time: string,
+    emailTo: string,
+    path: string,
+    template: string
   }
 }
 
