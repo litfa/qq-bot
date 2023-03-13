@@ -7,3 +7,7 @@ logs
 data
 .vscode
 *error.log
+
+template/*
+!/template/friend_check.html
+!/template/sendMessageHelloWorld.json

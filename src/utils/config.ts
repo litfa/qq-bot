@@ -1,6 +1,7 @@
 import { readFileSync, existsSync, writeFileSync } from 'fs'
 import { parse } from 'yaml'
 
+// todo (1)
 interface Config {
   plugins: string[]
   bot: {
@@ -18,10 +19,10 @@ interface Config {
   }
   smtp: {
     enable: boolean
-    host: string,
-    port: number,
-    secure: boolean,
-    from: string,
+    host: string
+    port: number
+    secure: boolean
+    from: string
     auth: {
       user: string
       pass: string
@@ -32,15 +33,21 @@ interface Config {
     command: string
   }
   friend_check: {
-    time: string,
-    emailTo: string,
-    path: string,
+    time: string
+    emailTo: string
+    path: string
     template: string
   }
   member_join_request: {
     group: number
     regex: string
     minLevel: number
+  }[]
+  send_message: {
+    time: string
+    groups: number[]
+    friends: number[]
+    template: string
   }[]
 }
 
