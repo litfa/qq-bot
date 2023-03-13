@@ -37,6 +37,11 @@ interface Config {
     path: string,
     template: string
   }
+  member_join_request: {
+    group: number
+    regex: string
+    minLevel: number
+  }[]
 }
 
 const defaultConfig = `

@@ -311,10 +311,10 @@ ts-node@^10.9.1:
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
 
-typescript-mirai-api-http@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/typescript-mirai-api-http/-/typescript-mirai-api-http-1.2.0.tgz#0aa8c83d273c1aaab686e697747254506f867977"
-  integrity sha512-ZDG6GcwWytYMA64n8XWFtd63oHymcnvcOyFgIB97sb7gxeA06W0Yug1n9UASYDa7liCnzqbKmRn84gPFHkqBew==
+typescript-mirai-api-http@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/typescript-mirai-api-http/-/typescript-mirai-api-http-1.3.0.tgz#7ef377181fc9a6fe0e954589623e842c29b797cf"
+  integrity sha512-bQjOBtTQfZbb50yK8d+Qjf+/Blun7MuYiTNhbsOc6rou0r3JIC2vTnPEdBXZz/38rEOk7i0dI+I38cwP3fQ+Ww==
   dependencies:
     ws "^8.12.0"
 
