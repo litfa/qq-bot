@@ -7,7 +7,7 @@ export const Main = () => {
     if (
       data?.data?.type == 'FriendMessage' &&
       (data.data.sender.id == undefined ||
-        data.data.sender.id == config.send_nudge.command_sender) &&
+        data.data.sender.id == config.send_nudge.commandSender) &&
       data.data.messageChain[1]?.type == 'Plain' &&
       data.data.messageChain[1]?.text.indexOf(config.send_nudge.command) == 0
     ) {

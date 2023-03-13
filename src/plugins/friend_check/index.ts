@@ -11,7 +11,7 @@ import { logger } from '../../utils/log'
 
 const { time, emailTo, path } = config.friend_check
 
-const template = readFileSync(config.friend_check.template, 'utf-8')
+const template = readFileSync(config.friend_check.templatePath, 'utf-8')
 
 /**
  * 获取上一次的数据
