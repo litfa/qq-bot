@@ -7,7 +7,8 @@
     "start": "ts-node ./src/app.ts",
     "dev": "nodemon src/app.ts",
     "build": "tsc",
-    "update:config": "ts-node scripts/updateConfig.ts"
+    "update:config": "ts-node scripts/updateConfig.ts",
+    "update:sql": "ts-node scripts/updateSql.ts"
   },
   "dependencies": {
     "await-to-js": "^3.0.0",
