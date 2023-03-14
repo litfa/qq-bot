@@ -13,3 +13,4 @@ template/*
 !/template/sendMessageHelloWorld.json
 !/template/config.update.template.yml
 !/template/config.template.yml
+*.local
