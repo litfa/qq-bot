@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node ./src/app.ts",
     "dev": "nodemon src/app.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "update:config": "ts-node scripts/updateConfig.ts"
   },
   "dependencies": {
     "await-to-js": "^3.0.0",

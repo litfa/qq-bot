@@ -5,7 +5,6 @@ import { scheduleJob } from 'node-schedule'
 
 export const Main = () => {
   config.send_message?.forEach(
-    // todo: 规范配置文件变量命名规则（1）
     ({ templatePath, time, friends, groups }) => {
       scheduleJob(time, () => {
         // 读模板

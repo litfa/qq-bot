@@ -1,5 +1,6 @@
 import { readFileSync, existsSync, writeFileSync } from 'fs'
 import { parse } from 'yaml'
+import { logger } from './log'
 
 interface Config {
   plugins: string[]
@@ -17,7 +18,6 @@ interface Config {
     database: string
   }
   smtp: {
-    enable: boolean
     host: string
     port: number
     secure: boolean
@@ -50,30 +50,19 @@ interface Config {
   }[]
 }
 
-const defaultConfig = `
-bot:
-  host: localhost
-  port: 4000
-  verifyKey: admin123
-  qq: 123456
-mysql:
-  host: localhost
-  port: 3306
-  user: root
-  password: admin123
-  database: qq_bot
-# 开启的插件
-plugins: ['hello_world', 'sql']
-# 发送戳一戳消息
-send_nudge:
-  # 允许谁发送指令
-  command_sender: 123456
-  # 指令内容
-  command: '戳'
-`
-
 if (!existsSync('config.yml')) {
-  writeFileSync('config.yml', defaultConfig, 'utf-8')
+  logger.warn('未找到配置文件，将尝试自动创建')
+  try {
+    const defaultConfig = readFileSync('./template/config.template.yml')
+    writeFileSync('config.yml', defaultConfig, 'utf-8')
+  } catch (e) {
+    logger.error(
+      '配置文件创建失败，请手动复制 template/config.template.yml 为 config.yml 修改配置后重新启动'
+    )
+    process.exit()
+  }
+  logger.info('未找到配置文件，已自动创建，请修改 config.yml 配置并重新启动')
+  process.exit()
 }
 
 export default parse(readFileSync('config.yml', 'utf8')) as Config
