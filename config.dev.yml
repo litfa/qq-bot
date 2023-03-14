@@ -1,0 +1,50 @@
+# 命令行拿配置文件路径，拿具体配置
+bot:
+  host: 'localhost'
+  port: 4001
+  verifyKey: LKAHFlfihealfLEIHlLFEhlk
+  qq: 3427291996
+mysql:
+  host: localhost
+  port: 3306
+  user: root
+  password: null
+  database: qq-bot
+smtp:
+  enable: true
+  host: smtp.ym.163.com
+  port: 25
+  secure: false
+  from: qq-bot <ltfei@ltfei.cn>
+  auth:
+    user: ltfei@ltfei.cn
+    pass: xing-xing_2005
+# plugins: ['hello_world', 'sql', send_nudge, friend_check, member_join_request]
+plugins:
+  # - hello_world
+  # - sql
+  # - send_nudge
+  # - friend_check
+  - member_join_request
+  - send_message
+send_nudge:
+  command_sender: 1585380249
+  command: '戳'
+friend_check:
+  emailTo: ltfei@ltfei.cn
+  time: '*/30 * * * * *'
+  # time: '0 0 0 0 0 0'
+  path: './data/friends.json'
+  templatePath: './template/friend_check.html'
+member_join_request:
+  - group: 962663855
+    regex: '^明月庄主$'
+    minLevel: 16
+  - group: 1055925573
+    regex: '^[a-zA-Z0-9_]{3,15}$'
+    minLevel: 16
+send_message:
+  - time: '*/30 * * * * *'
+    groups: [12345, 65432]
+    friends: [98765]
+    templatePath: './template/1.json'
