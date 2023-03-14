@@ -4,6 +4,7 @@ import { logger } from './log'
 
 const { host, user, password, database, port } = config.mysql
 
+logger.info(`连接数据库 ${host}:${port} ${user} ****** ${database}`)
 export const db = mysql.createPool({
   host,
   port,
