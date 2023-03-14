@@ -49,7 +49,7 @@ friend_check:
 #   regex: 正则表达式 用来匹配答案
 #   minLevel: 最小等级
 member_join_request:
-<for-member_join_request> - group: { member_join_request.group }
+<for-member_join_request>  - group: { member_join_request.group }
     regex: { member_join_request.regex }
     minLevel: { member_join_request.minLevel }
 </for-member_join_request>
