@@ -11,3 +11,5 @@ data
 template/*
 !/template/friend_check.html
 !/template/sendMessageHelloWorld.json
+!/template/config.update.template.yml
+!/template/config.template.yml

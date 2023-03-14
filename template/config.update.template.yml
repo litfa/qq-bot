@@ -1,0 +1,65 @@
+# 机器人配置
+bot:
+  host: { bot.host }
+  port: { bot.port }
+  verifyKey: { bot.verifyKey }
+  qq: { bot.qq }
+# 数据库配置
+mysql:
+  host: { mysql.host }
+  port: { mysql.port }
+  user: { mysql.user }
+  password: { mysql.password }
+  database: { mysql.database }
+# 邮箱
+smtp:
+  host: { smtp.host }
+  port: { smtp.port }
+  # ssl
+  secure: { smtp.secure }
+  from: { smtp.from }
+  auth:
+    user: { smtp.auth.user }
+    pass: { smtp.auth.pass }
+# 启用的插件，不需要的可以注释，若不启用下方的配置将不会生效
+plugins:
+  # - hello_world
+  - sql
+  - send_nudge
+  - friend_check
+  - member_join_request
+  - send_message
+# 插件相关配置
+# 戳一戳
+# 命令发送人（可以是自己发给自己） 发送 "戳 123456 654321 10" 即可在群123456中戳654321 10次
+send_nudge:
+  # 命令发送人qq，可以是自己
+  command_sender: { send_nudge.command_sender }
+  # 命令前缀
+  command: { send_nudge.command }
+# 好友检测
+# 按照 time 间隔表达式检测单向好友，若检测到会使用模板发送到邮箱，需要配置smtp
+friend_check:
+  emailTo: { friend_check.emailTo }
+  time: { friend_check.time }
+  path: { friend_check.path }
+  template: { friend_check.template }
+# 进群自动审批，bot需要有管理权限，否则不会触发事件
+# - group: 群号
+#   regex: 正则表达式 用来匹配答案
+#   minLevel: 最小等级
+member_join_request:
+<for-member_join_request> - group: { member_join_request.group }
+    regex: { member_join_request.regex }
+    minLevel: { member_join_request.minLevel }
+</for-member_join_request>
+# 定时发送消息
+send_message:
+<for-send_message>  - time: { send_message.time }
+    # 发送到哪些群聊
+    groups: { send_message.groups }
+    # 发送给哪些好友
+    friends: { send_message.friends }
+    # 消息模板 可在template文件夹中创建，文件会被git忽略，也可自行填写路径，相对路径相对于终端所在目录
+    template: { send_message.template }
+</for-send_message>

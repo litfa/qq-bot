@@ -1,0 +1,66 @@
+# 机器人配置
+bot:
+  host: 'localhost'
+  port: 4000
+  verifyKey: admin123
+  qq: 123456
+# 数据库配置
+mysql:
+  host: localhost
+  port: 3306
+  user: root
+  password: admin123
+  database: qq-bot
+# 邮箱
+smtp:
+  host: smtp.ym.163.com
+  port: 25
+  # ssl
+  secure: false
+  from: qq-bot <ltfei@ltfei.cn>
+  auth:
+    user: 123456
+    pass: admin123
+# 启用的插件，不需要的可以注释，若不启用下方的配置将不会生效
+plugins:
+  # - hello_world
+  - sql
+  - send_nudge
+  - friend_check
+  - member_join_request
+  - send_message
+# 插件相关配置
+# 戳一戳
+# 命令发送人（可以是自己发给自己） 发送 "戳 123456 654321 10" 即可在群123456中戳654321 10次
+send_nudge:
+  # 命令发送人qq，可以是自己
+  command_sender: 1585380249
+  # 命令前缀
+  command: '戳'
+# 好友检测
+# 按照 time 间隔表达式检测单向好友，若检测到会使用模板发送到邮箱，需要配置smtp
+friend_check:
+  emailTo: ltfei@ltfei.cn
+  time: '*/30 * * * * *'
+  path: './data/friends.json'
+  template: './template/friend_check.html'
+# 进群自动审批，bot需要有管理权限，否则不会触发事件
+# - group: 群号
+#   regex: 正则表达式 用来匹配答案
+#   minLevel: 最小等级
+member_join_request:
+  - group: 123456
+    regex: '^我是答案$'
+    minLevel: 16
+  - group: 234567
+    regex: '^[a-zA-Z0-9_]{3,15}$'
+    minLevel: 16
+# 定时发送消息
+send_message:
+  - time: '*/30 * * * * *'
+    # 发送到哪些群聊
+    groups: [12345, 65432]
+    # 发送给哪些好友
+    friends: [98765]
+    # 消息模板 可在template文件夹中创建，文件会被git忽略，也可自行填写路径，相对路径相对于终端所在目录
+    template: './template/sendMessageHelloWorld.json'
