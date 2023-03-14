@@ -97,7 +97,7 @@ const replace = async () => {
     'friend_check.emailTo': oldConfig?.checkFriend?.emailTo,
     'friend_check.time': `'${oldConfig?.checkFriend?.time}'`,
     'friend_check.path': 'data/friends.json',
-    'friend_check.template': 'template/friend_check.html'
+    'friend_check.templatePath': 'template/friend_check.html'
   }
 
   // 替换map
@@ -141,7 +141,7 @@ const replace = async () => {
         'send_message.time': `'${e.time}'`,
         'send_message.groups': JSON.stringify(e.groups),
         'send_message.friends': JSON.stringify(e.friends),
-        'send_message.template': `template/${e.template}`
+        'send_message.templatePath': `template/${e.template}`
       }
       for (let i in map) {
         // @ts-ignore

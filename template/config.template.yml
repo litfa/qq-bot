@@ -43,7 +43,7 @@ friend_check:
   emailTo: ltfei@ltfei.cn
   time: '*/30 * * * * *'
   path: './data/friends.json'
-  template: './template/friend_check.html'
+  templatePath: './template/friend_check.html'
 # 进群自动审批，bot需要有管理权限，否则不会触发事件
 # - group: 群号
 #   regex: 正则表达式 用来匹配答案
@@ -63,4 +63,4 @@ send_message:
     # 发送给哪些好友
     friends: [98765]
     # 消息模板 可在template文件夹中创建，文件会被git忽略，也可自行填写路径，相对路径相对于终端所在目录
-    template: './template/sendMessageHelloWorld.json'
+    templatePath: './template/sendMessageHelloWorld.json'
