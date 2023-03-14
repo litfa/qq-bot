@@ -109,7 +109,7 @@ const replace = async () => {
   // 替换member_join_request
   {
     const reg = /<for-member_join_request>([\s\S]*)<\/for-member_join_request>/
-    const content = reg.exec(newConfig) //?.at(1) || ''
+    const content = reg.exec(newConfig)?.at(1) || ''
     let text = ''
     // 循环每一项
     oldConfig?.MemberJoinRequest?.forEach((e) => {
