@@ -21,6 +21,11 @@ smtp:
   auth:
     user: 123456
     pass: admin123
+# 腾讯云api密钥
+tencentCloud:
+  credential:
+    secretId: AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    secretKey: AAAAAAAAAAAAAAAAAAAAAAAAAAAA
 # 启用的插件，不需要的可以注释，若不启用下方的配置将不会生效
 plugins:
   # - hello_world
@@ -64,3 +69,19 @@ send_message:
     friends: [98765]
     # 消息模板 可在template文件夹中创建，文件会被git忽略，也可自行填写路径，相对路径相对于终端所在目录
     templatePath: './template/sendMessageHelloWorld.json'
+# 刷新cdn缓存，需要配置tencentCloud
+# 消息格式( <>为必填 []为选填 )：
+# <命令前缀> [刷新类型 0:刷新变更资源/1:刷新全部资源] [urlEncode 0:关闭 1:开启]
+# <url 一行一个，可以是下面的预设，可以是all>
+# [url]
+# [url]
+purge_cdn_cache:
+  # 命令发送人 可以是自己
+  commandSender: 12345
+  # 命令前缀
+  command: 刷新cdn
+  # 预设，使用 all 可刷新所有
+  urls:
+    baidu: https://www.baidu.com
+    bing: https://www.bing.com
+    google: https://google.com

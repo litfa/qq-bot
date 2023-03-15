@@ -30,6 +30,12 @@ interface Config {
       pass: string
     }
   }
+  tencentCloud: {
+    credential: {
+      secretId: string
+      secretKey: string
+    }
+  }
   send_nudge?: {
     commandSender: number
     command: string
@@ -51,6 +57,13 @@ interface Config {
     friends: number[]
     templatePath: string
   }[]
+  purge_cdn_cache: {
+    commandSender: number
+    command: string
+    urls: {
+      [name: string]: string
+    }
+  }
 }
 logger.info(`加载配置文件 ${configPath}`)
 if (!existsSync(configPath)) {
