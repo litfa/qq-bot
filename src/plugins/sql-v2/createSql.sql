@@ -827,6 +827,7 @@ create table messages (
   sender_group_name varchar(100) null,
   sender_group_permission varchar(100) null,
   message_chain text null,
+  message_text text null,
   qq int null,
   inputting tinyint(1) null,
   friend_id int null,
