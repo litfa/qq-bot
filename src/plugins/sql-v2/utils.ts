@@ -1,3 +1,6 @@
+import { MessageChain } from 'typescript-mirai-api-http/dist/types/MessageChainType'
+import { v4 as uuidV4 } from 'uuid'
+
 /**
  * 转换下划线命名
  */
@@ -76,4 +79,40 @@ export const sqlToObj = (data: object) => {
     })
   })
   return res
+}
+
+export const toSqlData = (
+  data: any,
+  config?: {
+    date?: Date
+    timestamp?: number
+    uuid?: string
+  }
+) => {
+  const message: {
+    messageChain?: string
+    messageText?: string
+  } = {}
+  if (data.messageChain) {
+    message.messageChain = JSON.stringify(data.messageChain)
+    message.messageText = (data.messageChain as MessageChain[]).map((e) => {
+      if (e.type == 'Plain') {
+        return e.text
+      } else if (e.type == 'Image') {
+        return e.imageId
+      } else if (e.type == 'Voice') {
+        return e.voiceId
+      } else if (e.type == 'At') {
+        return '@' + e.target
+      }
+    }).join(' ')
+  }
+  const date = new Date()
+  return objToSql({
+    date: date || config.date,
+    timestamp: date.getTime() || config.timestamp,
+    uuid: uuidV4() || config.uuid,
+    ...data,
+    ...message
+  })
 }
