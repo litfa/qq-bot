@@ -48,14 +48,22 @@ export const Main = () => {
     ]
     if (types.includes(data.data?.type)) {
       const date = new Date()
+      const uuid = uuidV4()
       const tosql = toSqlData(data.data, {
         date,
         timestamp: date.getTime(),
-        uuid: uuidV4()
+        uuid
       })
 
       // data.data.type 已经判断过，是39种类型，直接拼接是安全的
       query(`insert into ${toUnderscoreCase(data.data.type)} set ?`, [tosql])
+      // 原格式
+      query('insert into message_text set ?', {
+        date,
+        timestamp: date.getTime(),
+        uuid,
+        text: JSON.stringify(data)
+      })
     }
   })
 }
