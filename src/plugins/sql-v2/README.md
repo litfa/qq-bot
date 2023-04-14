@@ -83,8 +83,7 @@
 - temp_sync_message
 
 # 建表
+[createSql.sql](./createSql.sql)
 
-```sql
-```
-
-# 插入数据
+# 迁移
+迁移工具，通过ws发送一遍
