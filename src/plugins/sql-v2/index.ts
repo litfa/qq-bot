@@ -1,4 +1,4 @@
-import { onMessage, sendFriendMessage, open } from '../../utils/ws'
+import { onMessage } from '../../utils/ws'
 import { query } from '../../utils/db'
 import { toUnderscoreCase, toSqlData } from './utils'
 import { v4 as uuidV4 } from 'uuid'

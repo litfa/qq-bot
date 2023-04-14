@@ -95,23 +95,25 @@ export const toSqlData = (
   } = {}
   if (data.messageChain) {
     message.messageChain = JSON.stringify(data.messageChain)
-    message.messageText = (data.messageChain as MessageChain[]).map((e) => {
-      if (e.type == 'Plain') {
-        return e.text
-      } else if (e.type == 'Image') {
-        return e.imageId
-      } else if (e.type == 'Voice') {
-        return e.voiceId
-      } else if (e.type == 'At') {
-        return '@' + e.target
-      }
-    }).join(' ')
+    message.messageText = (data.messageChain as MessageChain[])
+      .map((e) => {
+        if (e.type == 'Plain') {
+          return e.text
+        } else if (e.type == 'Image') {
+          return e.imageId
+        } else if (e.type == 'Voice') {
+          return e.voiceId
+        } else if (e.type == 'At') {
+          return '@' + e.target
+        }
+      })
+      .join(' ')
   }
   const date = new Date()
   return objToSql({
-    date: date || config.date,
-    timestamp: date.getTime() || config.timestamp,
-    uuid: uuidV4() || config.uuid,
+    date: config.date || date,
+    timestamp: config.timestamp || date.getTime(),
+    uuid: config.uuid || uuidV4(),
     ...data,
     ...message
   })
