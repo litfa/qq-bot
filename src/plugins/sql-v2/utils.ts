@@ -42,7 +42,7 @@ export const objToSql = (data: object) => {
     Object.entries(obj).forEach(([k, v]) => {
       // 处理类名
       const key = toUnderscoreCase(k)
-      if (v.constructor == Object) {
+      if (v && v.constructor == Object) {
         // 自调用 分解对象
         Object.entries(converObj(v)).forEach(([k, v]) => {
           const key2 = toUnderscoreCase(k)
