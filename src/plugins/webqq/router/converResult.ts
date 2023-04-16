@@ -42,9 +42,15 @@ export function converResult<T>(
   })
   // 再循环sync，找message,由于之前已经判断过，此时如果有相同，不操作，如果没有再插入
   syncMessage.forEach((e) => {
-    const msg = (message as FriendMessageType[]).find((obj) => {
-      return e.subject.id == obj.sender.id
-    })
+    const msg = (message as Array<GroupMessageType | FriendMessageType>).find(
+      (obj) => {
+        if (e.type == 'FriendSyncMessage') {
+          return e.subject.id == obj.sender.id
+        } else if (e.type == 'GroupSyncMessage') {
+          return e.subject.id == (obj as GroupMessageType).sender.group?.id
+        }
+      }
+    )
     if (!msg) {
       res.push(e)
     }
