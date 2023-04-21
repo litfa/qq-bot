@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { query } from '../../../utils/db'
-import { sqlToObj } from '../../sql-v2/utils'
+import { sqlToObj } from '../../sql_v2/utils'
 import { converResult } from './converResult'
 import type {
   FriendMessageType,
