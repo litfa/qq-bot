@@ -64,6 +64,12 @@ interface Config {
       [name: string]: string
     }
   }
+  sql_v2: {
+    path?: {
+      Image?: string
+      Voice?: string
+    }
+  }
 }
 logger.info(`加载配置文件 ${configPath}`)
 if (!existsSync(configPath)) {

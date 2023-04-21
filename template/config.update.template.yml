@@ -85,3 +85,10 @@ purge_cdn_cache:
     baidu: https://www.baidu.com
     bing: https://www.bing.com
     google: https://google.com
+# 数据库备份聊天记录
+# 需要配置数据库
+# 可配置 图片和语音的保存位置
+sql_v2:
+  path:
+    Image: './data/Image/'
+    Voice: './data/Voice/'
