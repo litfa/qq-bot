@@ -70,6 +70,11 @@ interface Config {
       Voice?: string
     }
   }
+  webqq: {
+    password: string
+    jwtSecretKey: string
+    baseUrl: string
+  }
 }
 logger.info(`加载配置文件 ${configPath}`)
 if (!existsSync(configPath)) {
