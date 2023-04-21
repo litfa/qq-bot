@@ -5,8 +5,10 @@ import { GroupMessageType, GroupSyncMessageType } from '../types/Message'
 
 const router = Router()
 
-const converResult = (data: GroupMessageType[] | GroupSyncMessageType[]) => {
-  const res = sqlToObj(data) as GroupMessageType | GroupSyncMessageType
+const converResult = <T extends GroupMessageType | GroupSyncMessageType>(
+  data: T
+): T => {
+  const res = sqlToObj(data) as T
   if (res.messageChain) {
     res.messageChain = JSON.parse(res.messageChain.toString())
   }
@@ -17,7 +19,7 @@ router.post('/friend')
 router.post('/group', async (req, res) => {
   const { group, lastId = 2147483647, limit = 100 } = req.body
   let err, result
-  ;[err, result] = await query(
+  ;[err, result] = await query<GroupMessageType[]>(
     'select * from group_message where id<? and sender__group__id=? order by timestamp desc limit ?',
     [lastId, group, limit]
   )
@@ -26,8 +28,8 @@ router.post('/group', async (req, res) => {
       status: 500
     })
   }
-  const groupMessage: GroupMessageType[] = result.map(converResult)
-  const minTimestamp = groupMessage.at(-1).timestamp
+  const groupMessage = result.map(converResult)
+  const minTimestamp = groupMessage.at(-1)?.timestamp
   const maxTimestamp = groupMessage[0].timestamp
 
   ;[err, result] = await query(
