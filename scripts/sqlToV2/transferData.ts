@@ -1,6 +1,6 @@
 import inquirer from 'inquirer'
 import { Query } from './db'
-import { insertSql } from '../../src/plugins/sql-v2/insertSql'
+import { insertSql } from '../../src/plugins/sql_v2/insertSql'
 
 export const transferData = async () => {
   const query = await Query()
