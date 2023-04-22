@@ -74,6 +74,7 @@ interface Config {
     password: string
     jwtSecretKey: string
     baseUrl: string
+    expiresIn: string
   }
 }
 logger.info(`加载配置文件 ${configPath}`)
