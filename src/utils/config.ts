@@ -64,6 +64,20 @@ interface Config {
       [name: string]: string
     }
   }
+  sql_v2: {
+    path?: {
+      Image?: string
+      Voice?: string
+    }
+  }
+  webqq: {
+    password: string
+    jwtSecretKey: string
+    baseUrl: string
+    expiresIn: string
+    port: number
+    corsOrigin: string
+  }
 }
 logger.info(`加载配置文件 ${configPath}`)
 if (!existsSync(configPath)) {
