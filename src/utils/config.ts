@@ -75,6 +75,8 @@ interface Config {
     jwtSecretKey: string
     baseUrl: string
     expiresIn: string
+    port: number
+    corsOrigin: string
   }
 }
 logger.info(`加载配置文件 ${configPath}`)

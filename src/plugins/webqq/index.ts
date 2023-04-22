@@ -11,6 +11,10 @@ import type { Errback, Response, NextFunction } from 'express'
 
 const { jwtSecretKey } = config.webqq
 
+const log = (message: string, ...args: string[]) => {
+  logger.info(message, ...args)
+}
+
 const app = express()
 
 // 中间件记录日志
@@ -23,14 +27,14 @@ app.use('*', (req: Request, res, next) => {
     console.log(e)
   }
   next()
-  logger.info(
+  log(
     `ip:${req.userIp}  请求:${req.path}  user-agent:${req.headers['user-agent']}`
   )
 })
 
 app.use(
   cors({
-    origin: 'http://localhost:5173'
+    origin: config.webqq.corsOrigin
   })
 )
 
@@ -46,12 +50,14 @@ app.use(
 app.use((err: Errback, req: Request, res: Response, next: NextFunction) => {
   // 捕获身份认证失败的错误
   if (err.name === 'UnauthorizedError')
-    logger.info(
+    log(
       `ip:${req.userIp}  请求:${req.path}  user-agent:${req.headers['user-agent']}`
     )
   return res.send({ status: 4003, msg: '认证失败，请重新登录' })
 })
 
-app.use('/api', router)
+app.use(config.webqq.baseUrl, router)
 
-app.listen(3000)
+app.listen(config.webqq.port, () => {
+  log(`[webqq] - api端口 :${config.webqq.port}/${config.webqq.baseUrl}`)
+})

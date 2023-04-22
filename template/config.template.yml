@@ -93,3 +93,20 @@ sql_v2:
   path:
     Image: './data/Image/'
     Voice: './data/Voice/'
+# 网页版qq
+# 需要配置数据库
+# 目前仅支持查看数据库中近期的聊天记录，后续会完善更多功能
+# 使用需要升级数据库插件到 sql-v2 可执行 yarn update:sqlv2 来升级
+webqq:
+  # 允许跨域请求的地址
+  corsOrigin: http://localhost:5173
+  # 网页端口
+  port: 3000
+  # 网页版登录密码
+  password: admin123
+  # token密钥 请填写随机字符串
+  jwtSecretKey: :OI#LR^YQWO*RFGUIQ#R@Q*YRFGUH#Q
+  # api目录(需要在网页端配置相同路径)
+  baseUrl: /api
+  # token过期时间(1d表示1天)
+  expiresIn: 1d
