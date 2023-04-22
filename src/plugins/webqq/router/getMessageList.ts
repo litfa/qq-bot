@@ -8,11 +8,12 @@ import type {
   GroupMessageType,
   GroupSyncMessageType
 } from '../types/Message'
+import dayjs from 'dayjs'
 
 const router = Router()
 
 router.post('/', async (req, res) => {
-  const timestamp = 1657547804000
+  const timestamp = dayjs().subtract(3, 'd').valueOf()
   const data = await Promise.all([
     query(
       'select * from friend_message where timestamp > ? group by sender__id;',
