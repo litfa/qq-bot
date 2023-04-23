@@ -24,15 +24,16 @@ export const download = (data: { syncId: number; data: Message }) => {
     if (e.type == 'Image' || e.type == 'Voice') {
       const filename = e.type == 'Image' ? e.imageId : e.voiceId
       const path = paths[e.type]
-      const [err, { data: res }] = await to(
+      const [err, data] = await to(
         axios({
           url: e.url,
           responseType: 'arraybuffer'
         })
       )
       if (err) {
-        logger.error('文件请求失败', err)
+        return logger.error('文件请求失败', err)
       }
+      const res = data.data
       saveFile(path || `./data/${e.type}`, filename, res)
     }
   })
