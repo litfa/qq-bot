@@ -2,6 +2,7 @@ import { Router } from 'express'
 import { query } from '../../../utils/db'
 import { sqlToObj } from '../../sql_v2/utils'
 import { FriendMessageType, FriendSyncMessageType } from '../types/Message'
+import dayjs from 'dayjs'
 
 const router = Router()
 
@@ -16,7 +17,12 @@ const converResult = <T extends FriendMessageType | FriendSyncMessageType>(
 }
 
 router.post('/friend', async (req, res) => {
-  const { qq, lastId = 2147483647, limit = 100 } = req.body
+  const {
+    qq,
+    lastId = 2147483647,
+    limit = 100,
+    maxTimestamp = dayjs().valueOf()
+  } = req.body
   let err, result
   ;[err, result] = await query<FriendMessageType[]>(
     'select * from friend_message where id<? and sender__id=? order by timestamp desc limit ?',
@@ -28,8 +34,8 @@ router.post('/friend', async (req, res) => {
     })
   }
   const friendMessage = result.map(converResult)
+  // 最大时间 最小时间 查区间内 => 最大时间 最小时间（上一次的最大时间）
   const minTimestamp = friendMessage.at(-1)?.timestamp
-  const maxTimestamp = friendMessage[0]?.timestamp
 
   ;[err, result] = await query(
     'select * from friend_sync_message where timestamp>? and timestamp<? and subject__id=? order by timestamp desc limit ?;    ',
@@ -54,8 +60,15 @@ router.post('/friend', async (req, res) => {
   })
 })
 router.post('/group', async (req, res) => {
-  const { group, lastId = 2147483647, limit = 100 } = req.body
-  let err, result
+  const {
+    group,
+    lastId = 2147483647,
+    limit = 100,
+    maxTimestamp = dayjs().valueOf()
+  } = req.body
+  let err,
+    result
+    // 先查100条群消息
   ;[err, result] = await query<FriendMessageType[]>(
     'select * from group_message where id<? and sender__group__id=? order by timestamp desc limit ?',
     [lastId, group, limit]
@@ -66,8 +79,8 @@ router.post('/group', async (req, res) => {
     })
   }
   const groupMessage = result.map(converResult)
+  // 最大时间 最小时间 查区间内 => 最大时间 最小时间（上一次的最大时间）
   const minTimestamp = groupMessage.at(-1)?.timestamp
-  const maxTimestamp = groupMessage[0]?.timestamp
 
   ;[err, result] = await query(
     'select * from group_sync_message where timestamp>? and timestamp<? and subject__id=? order by timestamp desc limit ?;    ',
