@@ -109,3 +109,8 @@ webqq:
   baseUrl: /api
   # token过期时间(1d表示1天)
   expiresIn: 1d
+# ws异常提醒 若ws连接断开，会按照间隔时间发送到邮箱，需要配置smtp
+error_message:
+  emailTo: ltfei@ltfei.cn
+  # 发送间隔，单位分钟
+  interval: 10

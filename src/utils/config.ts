@@ -78,6 +78,10 @@ interface Config {
     port: number
     corsOrigin: string
   }
+  error_message: {
+    emailTo: string
+    interval: number
+  }
 }
 logger.info(`加载配置文件 ${configPath}`)
 if (!existsSync(configPath)) {
