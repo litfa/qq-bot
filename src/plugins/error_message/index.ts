@@ -1,4 +1,4 @@
-import { error, close } from '../../utils/ws'
+import { error, close, onMessage } from '../../utils/ws'
 import config from '../../utils/config'
 import { sendMail } from '../../utils/mail'
 
@@ -25,3 +25,12 @@ const sendMessage = throttle(() => {
 
 error(sendMessage)
 close(sendMessage)
+onMessage((message) => {
+  if (
+    message.data.type == 'BotOfflineEventActive' ||
+    message.data.type == 'BotOfflineEventForce' ||
+    message.data.type == 'BotOfflineEventDropped'
+  ) {
+    sendMessage()
+  }
+})
