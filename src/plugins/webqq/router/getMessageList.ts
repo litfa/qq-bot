@@ -13,7 +13,8 @@ import dayjs from 'dayjs'
 const router = Router()
 
 router.post('/', async (req, res) => {
-  const timestamp = dayjs().subtract(3, 'd').valueOf()
+  // const timestamp = dayjs().subtract(3, 'd').valueOf()
+  const timestamp = dayjs('2023-4-20').valueOf()
   const data = await Promise.all([
     query(
       'select * from friend_message where timestamp > ? group by sender__id;',
