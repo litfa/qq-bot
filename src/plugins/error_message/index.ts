@@ -1,19 +1,7 @@
 import { error, close, onMessage } from '../../utils/ws'
 import config from '../../utils/config'
 import { sendMail } from '../../utils/mail'
-
-const throttle = (cb: () => void, time: number) => {
-  let timeout: NodeJS.Timeout
-  return () => {
-    if (timeout) {
-      return
-    }
-    timeout = setTimeout(() => {
-      cb()
-      timeout = null
-    }, time)
-  }
-}
+import { throttle } from '../../utils/throttle'
 
 const sendMessage = throttle(() => {
   sendMail({

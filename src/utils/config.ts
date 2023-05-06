@@ -82,6 +82,15 @@ interface Config {
     emailTo: string
     interval: number
   }
+  restart_bot: {
+    mcsmurl: string
+    apikey: string
+    uuid: string
+    remote_uuid: string
+    method: 'kill' | 'stop'
+    count: number
+    interval: number
+  }
 }
 logger.info(`加载配置文件 ${configPath}`)
 if (!existsSync(configPath)) {

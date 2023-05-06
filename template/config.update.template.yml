@@ -114,3 +114,16 @@ error_message:
   emailTo: ltfei@ltfei.cn
   # 发送间隔，单位分钟
   interval: 10
+# 调用mcsmapi重启bot
+restart_bot:
+  mcsmurl: http://localhost:23333
+  apikey: {{uuid}}
+  uuid: {{uuid}}
+  remote_uuid: {{uuid}}
+  # 关闭方法 普通关闭 或 强制终止
+  # kill or stop
+  method: kill
+  # 重启次数限制
+  count: 1
+  # 间隔，单位分钟
+  interval: 1
