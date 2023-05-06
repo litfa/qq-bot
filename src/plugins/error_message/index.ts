@@ -21,4 +21,14 @@ onMessage((message) => {
   ) {
     sendMessage()
   }
+  if (
+    message.data.type == 'BotReloginEvent' ||
+    message.data.type == 'BotOnlineEvent'
+  ) {
+    sendMail({
+      from: config.smtp.from,
+      to: config.friend_check.emailTo,
+      text: 'bot登录/重新登录成功'
+    })
+  }
 })
