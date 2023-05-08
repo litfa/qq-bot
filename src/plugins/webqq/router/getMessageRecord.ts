@@ -16,6 +16,13 @@ const converResult = <T extends FriendMessageType | FriendSyncMessageType>(
   return res
 }
 
+const getMessageId = (message: FriendSyncMessageType) => {
+  if (message.messageChain[0].type == 'Source') {
+    return message.messageChain[0].id
+  }
+  return null
+}
+
 router.post('/friend', async (req, res) => {
   const {
     qq,
@@ -48,7 +55,18 @@ router.post('/friend', async (req, res) => {
     })
   }
 
-  const syncMessage = result.map(converResult) as FriendSyncMessageType[]
+  const syncMessage = (
+    result.map(converResult) as FriendSyncMessageType[]
+  ).filter((syncMessage, index, array) => {
+    const id = getMessageId(syncMessage)
+    const i = array.findIndex((e) => {
+      return id == getMessageId(e)
+    })
+    if (i != index) {
+      console.log(i, index, syncMessage)
+    }
+    return i == index
+  })
 
   const message = [...friendMessage, ...syncMessage].sort((a, b) => {
     return a.timestamp - b.timestamp
