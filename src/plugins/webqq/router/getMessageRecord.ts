@@ -41,7 +41,9 @@ router.post('/friend', async (req, res) => {
     })
   }
   const friendMessage = result.map(converResult)
-  // 最大时间 最小时间 查区间内 => 最大时间 最小时间（上一次的最大时间）
+  // 最大时间 & 最小时间
+  // 最大时间: 上次请求查询的最小时间 
+  // 最小时间：上次查询(别人发的消息 筛选出的100条)的最小时间
   const minTimestamp = friendMessage.at(-1)?.timestamp
 
   ;[err, result] = await query(
