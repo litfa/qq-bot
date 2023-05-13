@@ -118,9 +118,9 @@ error_message:
 # 调用mcsmapi重启bot
 restart_bot:
   mcsmurl: http://localhost:23333
-  apikey: {{uuid}}
-  uuid: {{uuid}}
-  remote_uuid: {{uuid}}
+  apikey: uuid
+  uuid: uuid
+  remote_uuid: uuid
   # 关闭方法 普通关闭 或 强制终止
   # kill or stop
   method: kill
