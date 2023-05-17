@@ -271,7 +271,7 @@ const sqls = [
     message_id bigint null,
     index idx_message_id (message_id),
     time int null,
-    operator int null,
+    operator bigint null,
     index idx_uuid (uuid),
     index idx_timestamp (timestamp)
   );
