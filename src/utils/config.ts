@@ -65,7 +65,7 @@ interface Config {
     }
   }
   sql_v2: {
-    file_location: 'local' | 'cos'
+    file_location: 'local' | 'cos' | 'none'
     cos?: {
       ImagePath: string
       VoicePath: string

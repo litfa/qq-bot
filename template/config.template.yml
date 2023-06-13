@@ -90,7 +90,7 @@ purge_cdn_cache:
 # 需要配置数据库
 # 可配置 图片和语音的保存位置
 sql_v2:
-  # 文件保存位置 local 本地 或 cos 腾讯云对象存储
+  # 文件保存位置 local 本地 或 cos 腾讯云对象存储 或 none 不保存
   file_location: local
   # 腾讯云对象存储配置
   cos:
