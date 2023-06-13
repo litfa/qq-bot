@@ -142,3 +142,14 @@ restart_bot:
   count: 1
   # 间隔，单位分钟
   interval: 1
+# Hello World机器人存活状态测试
+# 向机器人发送指定命令，检测是否存活
+hello_world:
+  # 命令发送人QQ 可以是自己
+  commandSender: 
+  - 1287756886
+  - 1234567890
+  # 触发词
+  command: /ping
+  # 响应词
+  response: pang!
