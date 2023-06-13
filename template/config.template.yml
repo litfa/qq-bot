@@ -104,7 +104,7 @@ sql_v2:
     Bucket: name_1234567
     Region: ap-shanghai
   # 本地储存文件位置
-  # 无论文件是否储存本地，填写此配置就会将文件夹
+  # 无论文件是否储存本地，填写此配置就会将文件夹放在api端口的 /baseUrl/image/ 和 /baseUrl/voice/ 中
   path:
     Image: './data/Image/'
     Voice: './data/Voice/'

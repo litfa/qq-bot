@@ -93,7 +93,7 @@ sql_v2:
   file_location: local
   # 腾讯云对象存储配置
   cos:
-    # 图片和语音保存路径 后面需要加斜杠 /file/image/ 
+    # 图片和语音保存路径 后面需要加斜杠 /file/image/
     ImagePath: /image
     VoicePath: /voice
     # SECRETID 和 SECRETKEY 请登录 https://console.cloud.tencent.com/cam/capi 进行查看和管理
@@ -103,6 +103,7 @@ sql_v2:
     Bucket: name_1234567
     Region: ap-shanghai
   # 本地储存文件位置
+  # 无论文件是否储存本地，填写此配置就会将文件夹放在api端口的 /baseUrl/image/ 和 /baseUrl/voice/ 中
   path:
     Image: './data/Image/'
     Voice: './data/Voice/'

@@ -17,7 +17,7 @@ router.use('/search', search)
 router.use('/getProfile', getProfile)
 if (file.Image && file.Voice) {
   router.use('/static/image', expressStatic(file.Image))
-  router.use('/static/volic', expressStatic(file.Voice))
+  router.use('/static/voice', expressStatic(file.Voice))
 }
 
 export default router
