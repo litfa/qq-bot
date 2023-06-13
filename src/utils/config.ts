@@ -100,6 +100,11 @@ interface Config {
     count: number
     interval: number
   }
+  hello_world: {
+    commandSender: number[]
+    command: string
+    response: string
+  }
 }
 logger.info(`加载配置文件 ${configPath}`)
 if (!existsSync(configPath)) {
