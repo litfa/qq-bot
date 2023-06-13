@@ -89,6 +89,20 @@ purge_cdn_cache:
 # 需要配置数据库
 # 可配置 图片和语音的保存位置
 sql_v2:
+  # 文件保存位置 local 本地 或 cos 腾讯云对象存储
+  file_location: local
+  # 腾讯云对象存储配置
+  cos:
+    # 图片和语音保存路径 后面需要加斜杠 /file/image/ 
+    ImagePath: /image
+    VoicePath: /voice
+    # SECRETID 和 SECRETKEY 请登录 https://console.cloud.tencent.com/cam/capi 进行查看和管理
+    SecretId: xxxxxxx
+    SecretKey: xxxxxxx
+    # Bucket(存储桶名称) 和 Region(所属地域id) 请登录 https://console.cloud.tencent.com/cos/bucket 进行查看和管理
+    Bucket: name_1234567
+    Region: ap-shanghai
+  # 本地储存文件位置
   path:
     Image: './data/Image/'
     Voice: './data/Voice/'

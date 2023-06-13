@@ -65,6 +65,15 @@ interface Config {
     }
   }
   sql_v2: {
+    file_location: 'local' | 'cos'
+    cos?: {
+      ImagePath: string
+      VoicePath: string
+      SecretId: string
+      SecretKey: string
+      Bucket: string
+      Region: string
+    }
     path?: {
       Image?: string
       Voice?: string
