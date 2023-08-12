@@ -143,7 +143,7 @@ restart_bot:
   count: 1
   # 间隔，单位分钟
   interval: 1
-# Hello World机器人存活状态测试
+# Hello World 机器人存活状态测试
 # 向机器人发送指定命令，检测是否存活
 hello_world:
   # 命令发送人QQ 可以是自己
@@ -154,3 +154,24 @@ hello_world:
   command: /ping
   # 响应词
   response: pang!
+# anti_zaima 垃圾信息过滤 有效聊天插件 拒绝无效聊天
+# （其实就是关键词回复）
+anti_zaima:
+  # 垃圾信息（使用正则匹配）
+  rubbish_message:
+    - 在吗
+    - 在么
+    - 在不
+    - 在？
+    - zm
+    - zb
+    - zai
+    - zbz
+    - 在嘛
+    - 你好
+    - z?
+    - 救救
+  # 最大消息长度（消息超过该长度则跳过 anti_zaima 垃圾信息过滤）
+  max_length: 5
+  # 回复内容
+  send: '[自动回复] 有事直接带问题，不要问在不在，看到便会回复。不要发抖动和电话。'
