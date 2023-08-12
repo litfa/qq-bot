@@ -105,6 +105,11 @@ interface Config {
     command: string
     response: string
   }
+  anti_zaima: {
+    rubbish_message: string[]
+    max_length: number
+    send: string
+  }
 }
 logger.info(`加载配置文件 ${configPath}`)
 if (!existsSync(configPath)) {
