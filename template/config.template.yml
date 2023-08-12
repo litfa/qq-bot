@@ -35,6 +35,7 @@ plugins:
   - member_join_request
   - send_message
   - purge_cdn_cache
+  - anti_zaima
 # 插件相关配置
 # 戳一戳
 # 命令发送人（可以是自己发给自己） 发送 "戳 123456 654321 10" 即可在群123456中戳654321 10次
